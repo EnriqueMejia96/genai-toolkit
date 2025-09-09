@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=69", "wheel", "build"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "genai-toolkit"
+version = "0.1.0"
+description = "Telemetry and evaluation helpers for Gen AI + OpenTelemetry"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Jose Mejia" }]
+keywords = ["azure", "opentelemetry", "evaluation", "telemetry", "genai"]
+dependencies = [
+    "azure-identity",
+    "azure-ai-projects",
+    "azure-monitor-opentelemetry",
+    "opentelemetry-instrumentation-openai-v2",
+    "azure-ai-evaluation",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "mypy", "build", "twine"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["genaitoolkit*"]  # only your package
+
+[tool.setuptools.package-data]
+genaitoolkit = ["py.typed"]
